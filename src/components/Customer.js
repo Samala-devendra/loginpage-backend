@@ -1,12 +1,10 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Customer() {
-  // Define a state variable to store the customer data
-  const [books, setBooks] = useState([]); 
+  const [books, setBooks] = useState([]);
   
-  // Set initial state to an empty array
+  // Initial data fallback
   const initialData = [
     {
       id: 1,
@@ -53,10 +51,9 @@ function Customer() {
       quantity: 4,
       price: 350,
     },
-  ]; 
+  ];
 
-  // Disable ESLint rule for missing dependency array warning
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Disable the eslint warning for missing dependencies
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem('token'); // Get the token from localStorage
@@ -72,6 +69,7 @@ function Customer() {
       }
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   return (
@@ -108,3 +106,4 @@ function Customer() {
 }
 
 export default Customer;
+
